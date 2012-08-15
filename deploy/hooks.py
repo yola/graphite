@@ -27,8 +27,9 @@ class Hooks(ConfiguratedApp, PythonApp, TemplatedApp):
             os.mkdir(data_dir)
         chown_r(data_dir, 'www-data', 'www-data')
 
-        webapp_dir = glob.glob(os.path.join(install_root, 'virtualenv', 'lib',
-                    'python2.*', 'site-packages', 'graphite_web-*', 'webapp'))
+        webapp_dir = glob.glob(self.deploy_path('virtualenv', 'lib',
+                                                'python2.*', 'site-packages',
+                                                'graphite_web-*', 'webapp'))
 
         os.symlink(data_dir, self.deploy_path('storage'))
         os.symlink(webapp_dir[0], self.deploy_path('webapp'))
