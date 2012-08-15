@@ -6,6 +6,7 @@ import sys
 app = 'graphite'
 install_root = os.path.join("{{conf.deploy.root}}", app, 'live')
 
+site.addsitedir(os.path.join(install_root, 'graphiteconf'))
 for dir_ in glob.glob(os.path.join(install_root, 'virtualenv', 'lib',
                                    'python2.*', 'site-packages')):
     site.addsitedir(dir_)
