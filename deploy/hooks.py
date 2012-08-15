@@ -21,8 +21,6 @@ class Hooks(ConfiguratedApp, PythonApp, TemplatedApp):
             raise Exception("Config hasn't been loaded yet")
 
         data_dir = os.path.join(self.root, 'data')
-        install_root = os.path.join(self.root, self.app, 'live')
-
         if not os.path.exists(data_dir):
             os.mkdir(data_dir)
         chown_r(data_dir, 'www-data', 'www-data')
@@ -36,6 +34,7 @@ class Hooks(ConfiguratedApp, PythonApp, TemplatedApp):
 
         self.template('apache2/vhost.conf.template',
                       os.path.join('/etc/apache2/sites-enabled', self.app))
+        self.template('graphite.wsgi.template', self.deploy_path('conf'))
 
     def deployed(self):
         super(Hooks, self).deployed()
