@@ -1,3 +1,5 @@
+WSGIImportScript {{conf.deploy.root}}/graphite/live/conf/graphite.wsgi process-group=graphite application-group=%{GLOBAL}
+
 <VirtualHost *:80>
     ServerName {{aconf.domain}}
 
@@ -18,7 +20,6 @@
     WSGIDaemonProcess graphite processes=5 threads=5 display-name='%{GROUP}' inactivity-timeout=120
     WSGIProcessGroup graphite
     WSGIApplicationGroup %{GLOBAL}
-    WSGIImportScript {{conf.deploy.root}}/graphite/live/conf/graphite.wsgi process-group=graphite application-group=%{GLOBAL}
 
     WSGIScriptAlias / {{conf.deploy.root}}/graphite/live/conf/graphite.wsgi
 
