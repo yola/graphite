@@ -1,0 +1,4 @@
+whisper==0.9.10
+carbon==0.9.10
+graphite-web==0.9.10
+yola.configurator==0.1

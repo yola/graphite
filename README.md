@@ -1,4 +1,4 @@
-graphite
+Graphite
 ========
 
-Graphite deploy framework
+A yola-deploy wrapper for Graphite
