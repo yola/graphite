@@ -9,7 +9,7 @@ install_root = os.path.join("{{conf.deploy.root}}", app, 'live')
 for dir_ in glob.glob(os.path.join(install_root, 'virtualenv', 'lib',
                                    'python2.*', 'site-packages')):
     site.addsitedir(dir_)
-os.environ['DJANGO_SETTINGS_MODULE'] = 'graphite.settings'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'graphiteconf.settings'
 
 import django.core.handlers.wsgi
 application = django.core.handlers.wsgi.WSGIHandler()
