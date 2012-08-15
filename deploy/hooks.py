@@ -30,8 +30,8 @@ class Hooks(ConfiguratedApp, PythonApp, TemplatedApp):
         webapp_dir = glob.glob(os.path.join(install_root, 'virtualenv', 'lib',
                     'python2.*', 'site-packages', 'graphite_web-*', 'webapp'))
 
-        os.symlink(data_dir, self.deploy_path('conf'))
-        os.symlink(webapp_dir, self.deploy_path('webapp'))
+        os.symlink(data_dir, self.deploy_path('storage'))
+        os.symlink(webapp_dir[0], self.deploy_path('webapp'))
 
         self.template('apache2/vhost.conf.template',
                       os.path.join('/etc/apache2/sites-enabled', self.app))
