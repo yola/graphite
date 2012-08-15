@@ -1,0 +1,35 @@
+<VirtualHost *:80>
+    ServerName {{aconf.domain}}
+
+    {{if 'alias_domains' in aconf }}
+    ServerAlias {{for a in aconf.alias_domains}} {{a}} {{endfor}}
+    {{endif}}
+
+    Header add Yola-ID "{{aconf.domain}} %D %t"
+
+    DocumentRoot "{{conf.root}}/graphite/live/webapp"
+
+    LogLevel warn
+    CustomLog /var/log/apache2/graphite-access.log combined
+    ErrorLog /var/log/apache2/graphite-error.log
+
+    # I've found that an equal number of processes & threads tends
+    # to show the best performance for Graphite (ymmv).
+    WSGIDaemonProcess graphite processes=5 threads=5 display-name='%{GROUP}' inactivity-timeout=120
+    WSGIProcessGroup graphite
+    WSGIApplicationGroup %{GLOBAL}
+    WSGIImportScript {{conf.root}}/graphite/live/conf/graphite.wsgi process-group=graphite application-group=%{GLOBAL}
+
+    WSGIScriptAlias / {{conf.root}}/graphite/live/conf/graphite.wsgi
+
+    Alias /content/ {{conf.root}}/graphite/live/webapp/
+    <Location "/content/">
+        SetHandler None
+    </Location>
+
+    <Directory {{conf.root}}/graphite/live/conf/>
+        Order deny,allow
+        Allow from all
+    </Directory>
+</VirtualHost>
+
