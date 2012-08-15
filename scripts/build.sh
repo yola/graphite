@@ -10,4 +10,4 @@ mkdir build
 
 # copy source to dist
 cp requirements.txt build
-cp -R conf build
+cp -R graphite build
