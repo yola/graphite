@@ -21,7 +21,7 @@ class Hooks(ConfiguratedApp, PythonApp, TemplatedApp):
             raise Exception("Config hasn't been loaded yet")
 
         data_dir = os.path.join(self.root, 'data')
-        install_root = os.path.join(self.root, app, 'live')
+        install_root = os.path.join(self.root, self.app, 'live')
 
         if not os.path.exists(data_dir):
             os.mkdir(data_dir)
