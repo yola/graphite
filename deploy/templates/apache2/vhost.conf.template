@@ -7,7 +7,7 @@
 
     Header add Yola-ID "{{aconf.domain}} %D %t"
 
-    DocumentRoot "{{conf.root}}/graphite/live/webapp"
+    DocumentRoot "{{conf.deploy.root}}/graphite/live/webapp"
 
     LogLevel warn
     CustomLog /var/log/apache2/graphite-access.log combined
@@ -18,16 +18,16 @@
     WSGIDaemonProcess graphite processes=5 threads=5 display-name='%{GROUP}' inactivity-timeout=120
     WSGIProcessGroup graphite
     WSGIApplicationGroup %{GLOBAL}
-    WSGIImportScript {{conf.root}}/graphite/live/conf/graphite.wsgi process-group=graphite application-group=%{GLOBAL}
+    WSGIImportScript {{conf.deploy.root}}/graphite/live/conf/graphite.wsgi process-group=graphite application-group=%{GLOBAL}
 
-    WSGIScriptAlias / {{conf.root}}/graphite/live/conf/graphite.wsgi
+    WSGIScriptAlias / {{conf.deploy.root}}/graphite/live/conf/graphite.wsgi
 
-    Alias /content/ {{conf.root}}/graphite/live/webapp/
+    Alias /content/ {{conf.deploy.root}}/graphite/live/webapp/
     <Location "/content/">
         SetHandler None
     </Location>
 
-    <Directory {{conf.root}}/graphite/live/conf/>
+    <Directory {{conf.deploy.root}}/graphite/live/conf/>
         Order deny,allow
         Allow from all
     </Directory>
