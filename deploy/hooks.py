@@ -34,8 +34,8 @@ class Hooks(ConfiguratedApp, PythonApp, TemplatedApp):
 
         self.template('apache2/vhost.conf.template',
                       os.path.join('/etc/apache2/sites-enabled', self.app))
-        self.template('graphite.wsgi.template', self.deploy_path('conf',
-                                                            'graphite.wsgi'))
+        self.template('graphite.wsgi.template', self.deploy_path('graphite', 
+                                                    'conf', 'graphite.wsgi'))
 
     def deployed(self):
         super(Hooks, self).deployed()
