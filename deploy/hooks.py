@@ -32,6 +32,7 @@ class Hooks(ConfiguratedApp, PythonApp, TemplatedApp):
 
         os.symlink(data_dir, self.deploy_path('storage'))
         os.symlink(webapp_dir[0], self.deploy_path('webapp'))
+        os.symlink(self.deploy_path(self.app, 'conf'), self.deploy_path('conf'))
 
         self.template('apache2/vhost.conf.template',
                       os.path.join('/etc/apache2/sites-enabled', self.app))
