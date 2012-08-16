@@ -140,7 +140,7 @@
 # specification as the old database specification style is removed in 1.4
 DATABASES = {
     'default': {
-        'NAME': '',
+        'NAME': '/srv/graphite/data/graphite.sqlite',
         'ENGINE': 'django.db.backends.sqlite3',
         'USER': '',
         'PASSWORD': '',
