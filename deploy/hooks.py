@@ -42,6 +42,8 @@ class Hooks(ConfiguratedApp, PythonApp, TemplatedApp):
 
     def deployed(self):
         super(Hooks, self).deployed()
+        data_dir = os.path.join(self.root, 'data')
+        chown_r(data_dir, 'www-data', 'www-data')
         try:
             subprocess.call(('service', 'carbon', 'stop'))
             subprocess.check_call(('service', 'carbon', 'start'))
