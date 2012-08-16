@@ -1,6 +1,7 @@
 import os
 import logging
 import glob
+import subprocess
 
 from yola.deploy.hooks.configurator import ConfiguratedApp
 from yola.deploy.hooks.python import PythonApp
@@ -36,8 +37,14 @@ class Hooks(ConfiguratedApp, PythonApp, TemplatedApp):
                       os.path.join('/etc/apache2/sites-enabled', self.app))
         self.template('graphite.wsgi.template', self.deploy_path('graphite', 
                                                     'conf', 'graphite.wsgi'))
+        self.template('upstart-carbon.conf.template', '/etc/init/carbon.conf')
 
     def deployed(self):
         super(Hooks, self).deployed()
+        try:
+            subprocess.call(('service', 'carbon', 'stop'))
+            subprocess.check_call(('service', 'carbon', 'start'))
+        except subprocess.CalledProcessError:
+            log.error("Unable to restart carbon")
 
 hooks = Hooks
