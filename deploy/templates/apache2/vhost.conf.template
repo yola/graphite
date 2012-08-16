@@ -23,7 +23,7 @@ WSGIImportScript {{conf.deploy.root}}/graphite/live/graphite/conf/graphite.wsgi 
 
     WSGIScriptAlias / {{conf.deploy.root}}/graphite/live/graphite/conf/graphite.wsgi
 
-    Alias /content/ {{conf.deploy.root}}/graphite/live/webapp/
+    Alias /content/ {{conf.deploy.root}}/graphite/live/webapp/content/
     <Location "/content/">
         SetHandler None
     </Location>
