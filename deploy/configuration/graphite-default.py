@@ -13,9 +13,9 @@ def update(config):
             },
             'domain': 'graphite.%s' % config.common.domain.services,
             'htpasswd': {
-                'users': [
+                'users': {
                     'yola': 'MissingValue(graphite.htpasswd.users.yola)',
-                 ],
+                },
             },
         },
     }
