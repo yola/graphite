@@ -12,7 +12,7 @@ from yola.deploy.util import chown_r
 log = logging.getLogger(__name__)
 
 
-class Hooks(ConfiguratedApp, PythonApp, TemplatedApp, AuthenticatedApp):
+class Hooks(AuthenticatedApp, ConfiguratedApp, PythonApp, TemplatedApp):
 
     def __init__(self, *args, **kwargs):
         super(Hooks, self).__init__(*args, **kwargs)
