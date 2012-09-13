@@ -6,12 +6,13 @@ import subprocess
 from yola.deploy.hooks.configurator import ConfiguratedApp
 from yola.deploy.hooks.python import PythonApp
 from yola.deploy.hooks.templating import TemplatedApp
+from yola.deploy.hooks.htpasswd import AuthenticatedApp
 from yola.deploy.util import chown_r
 
 log = logging.getLogger(__name__)
 
 
-class Hooks(ConfiguratedApp, PythonApp, TemplatedApp):
+class Hooks(ConfiguratedApp, PythonApp, TemplatedApp, AuthenticatedApp):
 
     def __init__(self, *args, **kwargs):
         super(Hooks, self).__init__(*args, **kwargs)

@@ -12,6 +12,12 @@ def update(config):
                 'log': '/var/log/graphite.log',
             },
             'domain': 'graphite.%s' % config.common.domain.services,
+            'htpasswd': {
+                'users': {
+                    'user': 'MissingValue(graphite.htpasswd.users.user)',
+                    'password': 'MissingValue(graphite.htpasswd.users.password)',
+                 },
+            },
         },
     }
     return merge_dicts(config, new)
