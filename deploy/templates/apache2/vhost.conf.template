@@ -23,6 +23,13 @@ WSGIImportScript {{conf.deploy.root}}/graphite/live/graphite/conf/graphite.wsgi 
 
     WSGIScriptAlias / {{conf.deploy.root}}/graphite/live/graphite/conf/graphite.wsgi
 
+    <Location />
+         AuthType Basic
+         AuthName "Graphite Monitoring"
+         AuthUserFile /etc/yola/htpasswd/graphite
+         Require valid-user
+    </Location>
+
     Alias /content/ {{conf.deploy.root}}/graphite/live/webapp/content/
     <Location "/content/">
         SetHandler None
