@@ -17,9 +17,9 @@ WSGIImportScript {{conf.deploy.root}}/graphite/live/graphite/conf/graphite.wsgi 
 
     # I've found that an equal number of processes & threads tends
     # to show the best performance for Graphite (ymmv).
-    WSGIDaemonProcess graphite processes=5 threads=5 display-name='%{GROUP}' inactivity-timeout=120
+    WSGIDaemonProcess graphite processes=5 threads=5 display-name=wsgi-graphite inactivity-timeout=120
     WSGIProcessGroup graphite
-    WSGIApplicationGroup %{GLOBAL}
+    WSGIApplicationGroup wsgi-graphite
 
     WSGIScriptAlias / {{conf.deploy.root}}/graphite/live/graphite/conf/graphite.wsgi
 
