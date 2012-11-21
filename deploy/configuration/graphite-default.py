@@ -1,6 +1,6 @@
 import os
 
-from yola.configurator.dicts import merge_dicts
+from yola.configurator.dicts import merge_dicts, MissingValue
 
 
 def update(config):
@@ -14,7 +14,7 @@ def update(config):
             'domain': 'graphite.%s' % config.common.domain.services,
             'htpasswd': {
                 'users': {
-                    'yola': 'MissingValue(graphite.htpasswd.users.yola)',
+                    'yola': MissingValue('graphite.htpasswd.users.yola'),
                 },
             },
         },
