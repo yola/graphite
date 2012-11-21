@@ -1,3 +1,11 @@
+import os
+
+from yola.configurator.base import read_config
+
+
+app_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+conf = read_config(app_dir)
+
 ## Graphite local_settings.py
 # Edit this file to customize the default Graphite webapp settings
 #
@@ -65,6 +73,7 @@
 #RRD_DIR = '/opt/graphite/storage/rrd'
 #DATA_DIRS = [WHISPER_DIR, RRD_DIR] # Default: set from the above variables
 #LOG_DIR = '/opt/graphite/storage/log/webapp'
+LOG_DIR = conf.graphite.path.log_dir
 #INDEX_FILE = '/opt/graphite/storage/index'  # Search index file
 
 

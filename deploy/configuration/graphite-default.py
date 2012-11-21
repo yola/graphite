@@ -9,7 +9,7 @@ def update(config):
         'graphite': {
             'path': {
                 'data': data_path,
-                'log': '/var/log/graphite.log',
+                'log_dir': '/var/log/graphite',
             },
             'domain': 'graphite.%s' % config.common.domain.services,
             'htpasswd': {
