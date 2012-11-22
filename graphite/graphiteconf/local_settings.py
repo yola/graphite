@@ -18,6 +18,7 @@ conf = read_config(app_dir)
 # If your graphs appear to be offset by a couple hours then this probably
 # needs to be explicitly set to your local timezone.
 #TIME_ZONE = 'America/Los_Angeles'
+TIME_ZONE = "UTC"
 
 # Override this to provide documentation specific to your Graphite deployment
 #DOCUMENTATION_URL = "http://graphite.readthedocs.org/"
@@ -149,12 +150,12 @@ LOG_DIR = conf.graphite.path.log_dir
 # specification as the old database specification style is removed in 1.4
 DATABASES = {
     'default': {
-        'NAME': os.path.join(conf.deploy.root, 'graphite/data/graphite.sqlite'),
-        'ENGINE': 'django.db.backends.sqlite3',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': ''
+        'NAME': conf.graphite.db.name,
+        'ENGINE': conf.graphite.db.engine,
+        'USER': conf.graphite.db.user,
+        'PASSWORD': conf.graphite.db.password,
+        'HOST': conf.graphite.db.host,
+        'PORT': conf.graphite.db.port,
     }
 }
 #
