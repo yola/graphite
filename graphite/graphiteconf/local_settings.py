@@ -149,7 +149,7 @@ LOG_DIR = conf.graphite.path.log_dir
 # specification as the old database specification style is removed in 1.4
 DATABASES = {
     'default': {
-        'NAME': '/srv/graphite/data/graphite.sqlite',
+        'NAME': os.path.join(conf.deploy.root, 'graphite/data/graphite.sqlite'),
         'ENGINE': 'django.db.backends.sqlite3',
         'USER': '',
         'PASSWORD': '',
