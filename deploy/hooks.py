@@ -2,6 +2,7 @@ import os
 import logging
 import glob
 import subprocess
+import sys
 
 from yola.deploy.hooks.configurator import ConfiguratedApp
 from yola.deploy.hooks.python import PythonApp
@@ -42,6 +43,20 @@ class Hooks(AuthenticatedApp, ConfiguratedApp, PythonApp, TemplatedApp):
         webapp_dir = glob.glob(self.deploy_path('virtualenv', 'lib',
                                                 'python2.*', 'site-packages',
                                                 'graphite_web-*', 'webapp'))
+
+        graphite_dir = glob.glob(self.deploy_path('virtualenv', 'lib',
+                                                  'python2.*', 'site-packages',
+                                                  'graphite_web-*', 'graphite'))
+
+        cmd = ['virtualenv/bin/python', os.path.join(graphite_dir[0],
+                                                     'manage.py'), 'syncdb']
+        os.environ['DJANGO_SETTINGS_MODULE'] = 'graphiteconf.settings'
+        log.debug("Executing %r", cmd)
+        try:
+            subprocess.check_call(cmd, cwd=self.deploy_dir)
+        except subprocess.CalledProcessError:
+            log.error("Management command failed: %r", [command] + list(args))
+            sys.exit(1)
 
         os.symlink(data_dir, self.deploy_path('storage'))
 
