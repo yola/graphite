@@ -11,6 +11,14 @@ def update(config):
                 'data': data_path,
                 'log_dir': '/var/log/graphite',
             },
+            'db': {
+                'name': os.path.join(data_path, 'graphite.sqlite'),
+                'engine': 'django.db.backends.sqlite3',
+                'user': '',
+                'password': '',
+                'host': '',
+                'port': '',
+            },
             'domain': 'graphite.%s' % config.common.domain.services,
             'htpasswd': {
                 'users': {

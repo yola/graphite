@@ -1,4 +1,4 @@
-WSGIImportScript {{conf.deploy.root}}/graphite/live/graphite/conf/graphite.wsgi process-group=graphite application-group=%{GLOBAL}
+WSGIImportScript {{conf.deploy.root}}/graphite/live/graphite.wsgi process-group=graphite application-group=%{GLOBAL}
 
 <VirtualHost *:80>
     ServerName {{aconf.domain}}
@@ -21,7 +21,7 @@ WSGIImportScript {{conf.deploy.root}}/graphite/live/graphite/conf/graphite.wsgi 
     WSGIProcessGroup graphite
     WSGIApplicationGroup wsgi-graphite
 
-    WSGIScriptAlias / {{conf.deploy.root}}/graphite/live/graphite/conf/graphite.wsgi
+    WSGIScriptAlias / {{conf.deploy.root}}/graphite/live/graphite.wsgi
 
     <Location />
          AuthType Basic
