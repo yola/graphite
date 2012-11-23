@@ -1,3 +1,11 @@
+import os
+
+from yola.configurator.base import read_config
+
+
+app_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+conf = read_config(app_dir)
+
 ## Graphite local_settings.py
 # Edit this file to customize the default Graphite webapp settings
 #
@@ -10,6 +18,7 @@
 # If your graphs appear to be offset by a couple hours then this probably
 # needs to be explicitly set to your local timezone.
 #TIME_ZONE = 'America/Los_Angeles'
+TIME_ZONE = "UTC"
 
 # Override this to provide documentation specific to your Graphite deployment
 #DOCUMENTATION_URL = "http://graphite.readthedocs.org/"
@@ -65,6 +74,7 @@
 #RRD_DIR = '/opt/graphite/storage/rrd'
 #DATA_DIRS = [WHISPER_DIR, RRD_DIR] # Default: set from the above variables
 #LOG_DIR = '/opt/graphite/storage/log/webapp'
+LOG_DIR = conf.graphite.path.log_dir
 #INDEX_FILE = '/opt/graphite/storage/index'  # Search index file
 
 
@@ -140,12 +150,12 @@
 # specification as the old database specification style is removed in 1.4
 DATABASES = {
     'default': {
-        'NAME': '/srv/graphite/data/graphite.sqlite',
-        'ENGINE': 'django.db.backends.sqlite3',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': ''
+        'NAME': conf.graphite.db.name,
+        'ENGINE': conf.graphite.db.engine,
+        'USER': conf.graphite.db.user,
+        'PASSWORD': conf.graphite.db.password,
+        'HOST': conf.graphite.db.host,
+        'PORT': conf.graphite.db.port,
     }
 }
 #

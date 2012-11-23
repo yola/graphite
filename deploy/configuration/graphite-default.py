@@ -1,6 +1,6 @@
 import os
 
-from yola.configurator.dicts import merge_dicts
+from yola.configurator.dicts import merge_dicts, MissingValue
 
 
 def update(config):
@@ -9,12 +9,20 @@ def update(config):
         'graphite': {
             'path': {
                 'data': data_path,
-                'log': '/var/log/graphite.log',
+                'log_dir': '/var/log/graphite',
+            },
+            'db': {
+                'name': os.path.join(data_path, 'graphite.sqlite'),
+                'engine': 'django.db.backends.sqlite3',
+                'user': '',
+                'password': '',
+                'host': '',
+                'port': '',
             },
             'domain': 'graphite.%s' % config.common.domain.services,
             'htpasswd': {
                 'users': {
-                    'yola': 'MissingValue(graphite.htpasswd.users.yola)',
+                    'yola': MissingValue('graphite.htpasswd.users.yola'),
                 },
             },
         },

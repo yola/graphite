@@ -79,7 +79,6 @@ DOCUMENTATION_URL = "http://graphite.readthedocs.org/"
 ALLOW_ANONYMOUS_CLI = True
 LOG_METRIC_ACCESS = False
 LEGEND_MAX_ITEMS = 10
-TIME_ZONE = "UTC"
 
 #Authentication settings
 USE_LDAP_AUTH = False
