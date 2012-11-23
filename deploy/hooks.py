@@ -14,7 +14,6 @@ class Hooks(AuthenticatedApp, DjangoApp, UpstartApp):
     migrate_on_deploy = True
 
     def prepare(self):
-        os.environ['DJANGO_SETTINGS_MODULE'] = 'graphiteconf.settings'
         super(Hooks, self).prepare()
 
         data_dir = os.path.join(self.root, 'data')
