@@ -1,5 +1,3 @@
-WSGIImportScript {{conf.deploy.root}}/graphite/live/graphite.wsgi process-group=graphite application-group=%{GLOBAL}
-
 <VirtualHost *:80>
     ServerName {{aconf.domain}}
 
