@@ -4,4 +4,4 @@ graphite-web==0.9.10
 ceres==0.10.0
 Django==1.4.1
 django-tagging==0.3.1
-yola.configurator==0.1
+yoconfigurator==0.3.0

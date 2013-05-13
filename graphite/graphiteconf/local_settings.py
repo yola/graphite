@@ -1,6 +1,6 @@
 import os
 
-from yola.configurator.base import read_config
+from yoconfigurator.base import read_config
 
 
 app_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
