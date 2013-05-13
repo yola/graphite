@@ -2,10 +2,10 @@ import os
 import logging
 import glob
 
-from yola.deploy.hooks.django import DjangoApp
-from yola.deploy.hooks.htpasswd import AuthenticatedApp
-from yola.deploy.hooks.upstart import UpstartApp
-from yola.deploy.util import chown_r, touch
+from yodeploy.hooks.django import DjangoApp
+from yodeploy.hooks.htpasswd import AuthenticatedApp
+from yodeploy.hooks.upstart import UpstartApp
+from yodeploy.util import chown_r, touch
 
 log = logging.getLogger(__name__)
 
