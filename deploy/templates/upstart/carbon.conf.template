@@ -7,10 +7,10 @@ stop on runlevel [!2345]
 
 expect daemon
 
-env GRAPHITE_ROOT=/srv/graphite/live/
+env GRAPHITE_ROOT={{conf.deploy.root}}/graphite/live/
 export GRAPHITE_ROOT
 
-exec /srv/graphite/live/virtualenv/bin/carbon-cache.py start
+exec {{conf.deploy.root}}/graphite/live/virtualenv/bin/carbon-cache.py start
 
 respawn
 
