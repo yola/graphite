@@ -25,6 +25,7 @@ def update(config):
                     'yola': MissingValue(),
                 },
             },
+            'ssl': config.common.wild_ssl_certs.services,
         },
     }
     return merge_dicts(config, new)
