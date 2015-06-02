@@ -6,10 +6,10 @@
     {{endif}}
 
     SSLEngine on
-    SSLCertificateFile {{ aconf.ssl.cert }}
-    SSLCertificateKeyFile {{ aconf.ssl.key }}
+    SSLCertificateFile {{aconf.ssl.cert}}
+    SSLCertificateKeyFile {{aconf.ssl.key}}
     {{if 'chain' in aconf.ssl}}
-    SSLCertificateChainFile {{ aconf.ssl.chain }}
+    SSLCertificateChainFile {{aconf.ssl.chain}}
     {{endif}}
 
     Header always set Strict-Transport-Security "max-age=63072000; preload"
