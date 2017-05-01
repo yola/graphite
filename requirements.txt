@@ -2,6 +2,6 @@ whisper==0.9.10
 carbon==0.9.10
 graphite-web==0.9.10
 ceres==0.10.0
-Django==1.4.15
+Django==1.4.22
 django-tagging==0.3.1
 yoconfigurator==0.3.0
